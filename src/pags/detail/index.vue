@@ -6,8 +6,12 @@ import VanButton from "vant/lib/button";
 import {encode} from 'js-base64';
 import axios from "axios";
 import {showToast} from "vant/lib/toast";
+import VanIcon from "vant/lib/icon";
+import NavBar from "vant/lib/nav-bar";
+import {useRouter} from 'vue-router';
 
 const route = useRoute();
+const router = useRouter();
 const id = route.params.id as string;
 const title = route.query.title;
 const state = reactive({
@@ -30,7 +34,8 @@ async function cloundDownload() {
                 id,
                 params: ["token:81705726", [state.downloadUrl], {}]
             }
-        )
+        );
+        showToast('任务添加成功!')
     }catch (e){
         showToast('出错了,可能未开vpn!')
     }
@@ -40,6 +45,9 @@ function download() {
     state.downloadUrl && window.open(state.downloadUrl);
 }
 
+function goBack(){
+    router.back();
+}
 async function getData(id: string) {
     const data = await getDetail(id);
     Object.assign(state, data);
@@ -50,9 +58,21 @@ getData(id);
 
 <template>
     <div class="container">
-        <h3>{{ encodeURIComponent(title) }}</h3>
+        <nav-bar :title="title">
+            <template #left>
+                <van-icon
+                    @click="goBack"
+                    name="arrow-left"
+                    size="24"
+                    color="#fff"/>
+            </template>
+            <template #right>
+                <van-icon name="search" size="24" color="#fff"/>
+            </template>
+        </nav-bar>
+        <h3>{{ title }}</h3>
         <div class="content-wrapper" v-html="state.detail"></div>
-        <div class="controls">
+        <div class="controls" v-show="state.downloadUrl">
             <van-button
                     square
                     icon="guide-o"

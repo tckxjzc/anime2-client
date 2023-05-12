@@ -41,9 +41,17 @@ export default defineConfig({
   server:{
     host:'0.0.0.0',
     proxy: {
+      '/jsonrpc': {
+        target: 'http://aria2.tckxjzc.online',
+        changeOrigin:true,
+      },
       '/api': {
         target: 'http://127.0.0.1:3006',
         rewrite: (path) => path.replace(/^\/api/, ''),
+      },
+      '/test': {
+        target: 'http://localhost:9600',
+        changeOrigin:true,
       },
     }
   }

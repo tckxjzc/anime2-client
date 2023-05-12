@@ -101,7 +101,7 @@ if (listStore.list.length === 0) {
                          :data-ani-id="item.id"
                     >
                         <div class="title">
-                            {{ encodeURIComponent(item.title) }}
+                            {{ item.title }}
                         </div>
                         <div class="info">
                             <span>{{ item.updateTime }}</span>
