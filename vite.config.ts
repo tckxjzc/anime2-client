@@ -7,6 +7,7 @@ import { VitePWA } from 'vite-plugin-pwa'
 
 // https://vitejs.dev/config/
 export default defineConfig({
+  base:'./',
   plugins: [
     vue(),
     vueJsx(),
@@ -14,19 +15,14 @@ export default defineConfig({
       registerType: 'autoUpdate',
       injectRegister: 'auto',
       manifest: {
-        name: 'My Awesome App',
-        short_name: 'MyApp',
-        description: 'My Awesome App description',
-        theme_color: '#ffffff',
+        name: '动漫下载',
+        short_name: '动漫下载',
+        description: 'Anime Download',
+        theme_color: '#FF618E',
         icons: [
           {
-            src: 'pwa-192x192.png',
-            sizes: '192x192',
-            type: 'image/png'
-          },
-          {
-            src: 'pwa-512x512.png',
-            sizes: '512x512',
+            src: 'icon.png',
+            sizes: '256x256',
             type: 'image/png'
           }
         ]

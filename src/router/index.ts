@@ -1,6 +1,6 @@
 import { createRouter, createWebHashHistory } from 'vue-router'
-import Home from '@/pags/home/index.vue'
-import Detail from '@/pags/detail/index.vue'
+import Home from '@/pages/home/index.vue'
+import Detail from '@/pages/detail/index.vue'
 
 const router = createRouter({
   history: createWebHashHistory(import.meta.env.BASE_URL),
