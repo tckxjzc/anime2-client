@@ -7,6 +7,7 @@ export const useListStore = defineStore('list', {
     keyword:'',
     list:[] as Record<string, any>,
     total:1,
+    scrollTop: 0,
   }),
   actions: {
     next(){
@@ -17,6 +18,9 @@ export const useListStore = defineStore('list', {
     },
     updateKeyword(keyword:string){
         this.keyword = keyword;
+    },
+    updateScrollTop(scrollTop:number){
+        this.scrollTop = scrollTop;
     },
     clearKeyword(){
         this.keyword = '';

@@ -42,9 +42,13 @@ export default defineConfig({
         changeOrigin:true,
       },
       '/api': {
-        target: 'http://127.0.0.1:3006',
-        rewrite: (path) => path.replace(/^\/api/, ''),
+        target: 'https://home.tckxjzc.online',
+        changeOrigin:true,
       },
+      // '/api': {
+      //   target: 'http://127.0.0.1:3006',
+      //   rewrite: (path) => path.replace(/^\/api/, ''),
+      // },
       '/test': {
         target: 'http://localhost:9600',
         changeOrigin:true,
